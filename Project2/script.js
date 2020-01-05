@@ -18,7 +18,7 @@ for (let i = 0; i < 2; i++) {
         (typeof (requiredBudget)) != null && required != '' && requiredBudget != '' && required.length < 50) {
         appData.expenses[required] = requiredBudget;
     } else {
-        i = i - 1;
+        i--;
     }
 }
 
@@ -30,7 +30,7 @@ for (let i = 0; i < 2; i++) {
 //         (typeof (requiredBudget)) != null && required != '' && requiredBudget != '' && required.length < 50) {
 //         appData.expenses[required] = requiredBudget;
 //     } else {
-//         i = i - 1;
+//         i--;
 //     }
 //     i++;
 // }
@@ -43,7 +43,7 @@ for (let i = 0; i < 2; i++) {
 //         (typeof (requiredBudget)) != null && required != '' && requiredBudget != '' && required.length < 50) {
 //         appData.expenses[required] = requiredBudget;
 //     } else {
-//         i = i - 1;
+//         i--;
 //     }
 //     i++;
 // } while ( i < 2);
