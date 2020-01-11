@@ -39,3 +39,7 @@ let incr = 10,
 
 console.log(incr++);
 console.log(decr--);
+
+let i = 5;
+let b = i = 2;
+console.log( null || 2 && 3 || 4);
