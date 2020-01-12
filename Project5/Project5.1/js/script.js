@@ -23,6 +23,8 @@ let col = document.querySelectorAll('.column'),
     menu =  document.getElementsByClassName('menu')[0],
     menuItemFive = document.createElement('li');
     
+    //menu.insertBefore(menuItem[2], menuItem[1]); //можна було не перебирати всі кнопки а поміняти місцями дві(на один крок менше роботи)
+
     menu.appendChild(menuItemTri);
     menu.appendChild(menuItemFour);
 
