@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //TIMER
 
-    let deadline = '2020-01-26';
+    let deadline = '2020-01-28';
 
     function getTimeRemaining(endtime) {
         let t = Date.parse(deadline) - Date.parse(new Date()),
@@ -49,21 +49,13 @@ window.addEventListener('DOMContentLoaded', function () {
             minutes = Math.floor((t / 1000 / 60) % 60),
             hours = Math.floor(t / (1000 * 60 * 60));
         // hours = ((t / 1000 / 60 / 60) % 24);
-        if (t < 0) {
-            return {
-                'total': '00',
-                'hourse': '00',
-                'minutes': '00',
-                'seconds': '00'
-            };
-        } else {
-            return {
+         return {
                 'total': t,
                 'hourse': hours,
                 'minutes': minutes,
                 'seconds': seconds
             };
-        }
+        
     }
 
     function setClock(id, endtime) {
@@ -75,25 +67,21 @@ window.addEventListener('DOMContentLoaded', function () {
 
         function updateClock() {
             let t = getTimeRemaining(endtime);
-            if (t.seconds.toString().length == 1) {
-                hours.textContent = t.hourse;
-                minutes.textContent = t.minutes;
-                seconds.textContent = "0" + t.seconds;
-            } else if (t.minutes.toString().length == 1) {
-                hours.textContent = t.hourse;
-                minutes.textContent = "0" + t.minutes;
-                seconds.textContent = t.seconds;
-            } else if (t.hourse.toString().length == 1) {
-                hours.textContent = "0" + t.hourse;
-                minutes.textContent = t.minutes;
-                seconds.textContent = t.seconds;
-            } else {
-                hours.textContent = t.hourse;
-                minutes.textContent = t.minutes;
-                seconds.textContent = t.seconds;
-            }
+          
+            function addZero(num){
+                if(num <= 9) {
+                    return '0' + num;
+                } else {return num;}}
+            
+                hours.textContent = addZero(t.hourse);
+                minutes.textContent = addZero(t.minutes);
+                seconds.textContent = addZero(t.seconds);
+            
             if (t.total <= 0) {
                 clearInterval(timeInterval);
+                hours.textContent = '00';
+                minutes.textContent = '00';
+                seconds.textContent = '00';
             }
         }
 
