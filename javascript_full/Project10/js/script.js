@@ -49,13 +49,13 @@ window.addEventListener('DOMContentLoaded', function () {
             minutes = Math.floor((t / 1000 / 60) % 60),
             hours = Math.floor(t / (1000 * 60 * 60));
         // hours = ((t / 1000 / 60 / 60) % 24);
-         return {
-                'total': t,
-                'hourse': hours,
-                'minutes': minutes,
-                'seconds': seconds
-            };
-        
+        return {
+            'total': t,
+            'hourse': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+
     }
 
     function setClock(id, endtime) {
@@ -67,16 +67,19 @@ window.addEventListener('DOMContentLoaded', function () {
 
         function updateClock() {
             let t = getTimeRemaining(endtime);
-          
-            function addZero(num){
-                if(num <= 9) {
+
+            function addZero(num) {
+                if (num <= 9) {
                     return '0' + num;
-                } else {return num;}}
-            
-                hours.textContent = addZero(t.hourse);
-                minutes.textContent = addZero(t.minutes);
-                seconds.textContent = addZero(t.seconds);
-            
+                } else {
+                    return num;
+                }
+            }
+
+            hours.textContent = addZero(t.hourse);
+            minutes.textContent = addZero(t.minutes);
+            seconds.textContent = addZero(t.seconds);
+
             if (t.total <= 0) {
                 clearInterval(timeInterval);
                 hours.textContent = '00';
