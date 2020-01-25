@@ -93,8 +93,7 @@ window.addEventListener('DOMContentLoaded', function () {
     setClock('timer', deadline);
 
     //Modal window
-    let more = document.querySelector('.more'),
-        overlay = document.querySelector('.overlay'),
+    let overlay = document.querySelector('.overlay'),
         close = document.querySelector('.popup-close'),
         btn = {
             description1: document.querySelectorAll('.description-btn')[0],
