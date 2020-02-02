@@ -1,25 +1,39 @@
-let inputRub = document.getElementById("rub"),
-    inputUsd = document.getElementById("usd");
-    console.log(inputRub);
-    inputRub.addEventListener("input", ()=> {
-        let request = new XMLHttpRequest();
-        // request.open(method, url, async, login, password);
-        request.open('GET', 'current.json');
-        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        request.send();
+let inputRub = document.getElementById('rub'),
+    inputUsd = document.getElementById('usd');
 
-        //status
-        //statusText
-        //responseText / response
-        //readyState
+inputRub.addEventListener('input', () => {
 
-        request.addEventListener('readystatechange', ()=>{
-            if(request.readyState === 4 && request.status === 200) {
-                let data = JSON.parse(request.response);
+    function catchData() {
 
-                inputUsd.value = inputRub.value / data.usd;
-            } else {
-                inputUsd.value = "ERROR";
-            }
+        return new Promise(function(resolve, reject){
+            let request = new XMLHttpRequest();
+            request.open("GET", "current.json");
+        
+            request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            request.send();
+        
+            request.onload = function() {
+                if(request.readyState === 4) {
+                        if(request.status == 200) {
+                            resolve(this.response);
+                        }
+                        else {
+                            reject();
+                        
+                        }
+                }
+            };
         });
-    });
+    }
+
+    catchData()
+    .then(response => {
+        console.log(response);
+        let data = JSON.parse(response);
+        inputUsd.value = inputRub.value / data.usd;
+    })
+    .then(() => console.log(5000))
+    .catch(() => inputUsd.value = "Что-то пошло не так");
+
+
+});
