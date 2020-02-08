@@ -1,0 +1,23 @@
+require('formdata-polyfill');
+require('nodelist-foreach-polyfill');
+// require('es6-promise').polyfill();
+
+window.addEventListener('DOMContentLoaded', function() {
+    "use strict";
+
+    let calc = require('./parts/calc.js'),
+        form = require('./parts/form.js'),
+        slider = require('./parts/slider.js'),
+        tabs = require('./parts/tabs.js'),
+        timer = require('./parts/timer.js'),
+        modal = require('./parts/modal.js');
+
+        calc();
+        form();
+        slider();
+        tabs();
+        timer();
+        modal();
+
+});
+
